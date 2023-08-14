@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+    background: linear-gradient(236.85deg, #06b48f 14%, #469beb 22%, #0621b9 64%);    
+}
+
+.container {
+    padding: 20em;
+}
+
+h1 {
+    color: rgb(255, 169, 8);
+    font-size: 3em;
+}
+
+button, select {
+    border-radius: 16px;
+    color: blue;
+    font-size: 1.4em;
+    padding: 0.2em 0.4em;
+    background: rgb(17, 209, 17);
+}
+
+button:hover, select:hover {
+    color:red;
+  }
+
+button:focus, select:focus {
+    color:gold;
+}
