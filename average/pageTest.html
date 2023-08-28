@@ -11,12 +11,16 @@
 <body>
     <div id="div" class="container">
         <h1>Calculadora de Média</h1>
-        <select id='media'>
-        <option value='' selected disabled>Selecione o modo de avaliação
-        <option value='b'>Bimestre
-        <option value='t'>Trimestre
-        <option value='s'>Semestre
-        </select><br><br><br>
+        <h2>Defina os pesos:</h2>
+        <div class="pesos">
+          <input type="number" class="inPeso" id="i1">
+          <h3>+</h3>
+          <input type="number" class="inPeso" id="i2">
+          <h3>+</h3>
+          <input type="number" class="inPeso" id="i3">
+          <h3>=</h3>
+          <input type="number" class="inPeso" id="i4" disabled>
+        </div><br><br>
         <button onclick='select2()'>Começar</button>
     </div>
 </body>

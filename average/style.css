@@ -25,5 +25,27 @@ button:hover, select:hover {
   }
 
 button:focus, select:focus {
-    color:gold;
+    color:red;
+}
+
+.pesos {
+    display: inline-flex;
+    align-items: center;
+}
+
+h2, h3 {
+    color: rgb(255, 169, 8);
+    padding: 5px;
+}
+
+h3 {
+    padding: 5px;
+}
+
+.inPeso {
+    border-radius: 16px;
+    color: blue;
+    background: rgb(17, 209, 17);
+    width: 65px;
+    height: 32px;
 }
