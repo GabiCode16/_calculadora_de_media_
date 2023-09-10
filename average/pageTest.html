@@ -11,17 +11,34 @@
 <body>
     <div id="div" class="container">
         <h1>Calculadora de Média</h1>
-        <h2>Defina os pesos:</h2>
-        <div class="pesos">
-          <input type="number" class="inPeso" id="i1">
-          <h3>+</h3>
-          <input type="number" class="inPeso" id="i2">
-          <h3>+</h3>
-          <input type="number" class="inPeso" id="i3">
-          <h3>=</h3>
-          <input type="number" class="inPeso" id="i4" disabled>
-        </div><br><br>
-        <button onclick='select2()'>Começar</button>
+
+        <table style="width:100%">
+
+          <thead>
+            <tr>
+              <th>Disciplina</th>
+              <th>1º trimestre</th>
+              <th>2º trimestre</th>
+              <th>3º trimestre</th>
+              <th>Média Final</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th>Matemática</th>
+              <th><input type="number" id="11"></th>
+              <th><input type="number" id="12"></th>
+              <th><input type="number" id="13"></th>
+              <th><input type="number" id="14"></th>
+            </tr>
+          </tbody>
+
+        </table><br><br><br><br>
+
+        <button onclick="edit()">Editar</button>
+        <button onclick="download()">Download</button>
+
     </div>
 </body>
 
