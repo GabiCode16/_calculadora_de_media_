@@ -175,6 +175,7 @@ function start_table() {
 function add_remove() {
     var materia = document.getElementById('sub').value;
     var existance = false;
+    document.getElementById('sub').value = '';
 
     for (var i = 0; i < materias.length; i++) {
         if (materia == materias[i])
@@ -321,41 +322,69 @@ function valueTable() {
 function boletim() {
 
     switch (type) {
+
         case '01':
-            var complete = 0;
-            var mediaA = '(';
-            var solucion;
+
+            var complete;
+
             for (var i = 0; i < materias.length; i++) {
-                for (var j = 0; j < pesosQtd; j++) {
-                    if (matriz[i][j] == '')
-                        mediaA += 'x + ';
-                    else {
-                        mediaA += matriz[i][j] + ' + ';
-                        complete++;
-                    }
-                }
-                if (matriz[i][pesosQtd] == '')
-                    mediaA += '0 ) / ' + pesosQtd + ' = ' + 'x';
-                else {
-                    complete++;
-                    if (complete == pesosQtd + 1) {
-                        mediaA += '0 ) / ' + pesosQtd + ' = x';
-                    }
-                    else {
-                        mediaA += '0 ) / ' + pesosQtd + ' = ' + matriz[i][pesosQtd];
-                    }
+                complete = 0;
+                for (var j = 0; j <= pesosQtd; j++) {
+                    if (matriz[i][j] != '')
+                        complete++
+                if (complete == pesosQtd + 1)
+                    matriz[i][pesosQtd] = '';
                 }
             }
-            
-            console.log(mediaA);
+
+            var a;
+            var b = 0;
+
+            for (var i = 0; i < materias.length; i++) {
+
+                b = 0;
+
+                if (matriz[i][pesosQtd] == '')
+                    a = -1 * pesosQtd;
+                else
+                    a = 1;
+
+                var bCount = 0;
+
+                for (var j = 0; j < pesosQtd; j++) {
+                    if (matriz[i][j] != '') {
+                        b += parseFloat(matriz[i][j]);
+                        bCount++;
+                    }
+                }
+
+                if (bCount < pesosQtd)
+                    b -= pesosQtd * parseFloat(matriz[i][pesosQtd]);
+
+                var x = (Math.round(-b / a * 10) / 10).toString();
+
+                for (var j = 0; j <= pesosQtd; j++) {
+                    if (matriz[i][j] == '')
+                        matriz[i][j] = x;
+                }
+            }
+
+            console.log(matriz);
             
             break;
+
         case '02':
+
             alert('Pod');
+
             break;
+
         case '03':
+
             alert('harmony');
+
             break;
+
     }
 
 }
