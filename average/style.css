@@ -1,6 +1,7 @@
 body {
     text-align: center;
-    background: linear-gradient(236.85deg, #06b48f 14%, #469beb 22%, #0621b9 64%); 
+    /* background: linear-gradient(236.85deg, #06b48f 14%, #469beb 22%, #0621b9 64%);  */
+    background-color: #0621b9;
 }
 
 .container {
@@ -59,12 +60,12 @@ input {
 }
 
 table {
-    border: 2px solid black;
+    border: 2px solid rgb(17, 209, 129);
     border-collapse: collapse;
   }
 
   th, tr, td {
-  border: solid 1px black;
-  color: black;
+  border: solid 1px rgb(17, 209, 129);
+  color: white;
   padding: 0.2em 0.4em;
 }

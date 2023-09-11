@@ -82,7 +82,7 @@ function select2() {
 
             divText.innerHTML = page3;
 
-            const intervalId = setInterval(loopAssincrono, 500);
+            const intervalId = setInterval(loopAssincrono, 10);
 
             function loopAssincrono() {
                 pesoTotal = 0;
