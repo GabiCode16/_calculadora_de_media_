@@ -7,6 +7,9 @@ var pesoTotal = 0;
 var table = false;
 var materias = [];
 var subjects = false;
+var matriz = [];
+var ready = true;
+var tableBuilt = false;
 
 function start() { 
     var page2 = "<h1>Calculadora de Média</h1>\n" +
@@ -184,7 +187,6 @@ function add_remove() {
     if (existance)
         materias.splice(materias.indexOf(materia), 1);
 
-    console.log(materias);
 }
 
 function finish2() {
@@ -263,15 +265,97 @@ function finish() {
 
 function valueTable() {
 
-    var matriz = [];
+    if (!tableBuilt) {
 
-    var pos = '';
+        var pos = '';
 
-    for (var i = 0; i < materias.length; i++) {
-        matriz.push([]);
-        for (var j = 0; j <= pesosQtd; j++) {
-            pos = i.toString() + j.toString();
-            matriz[i].push(document.getElementById(pos).value);
+        for (var i = 0; i < materias.length; i++) {
+            matriz.push([]);
+            for (var j = 0; j <= pesosQtd; j++) {
+                pos = i.toString() + j.toString();
+                matriz[i].push(document.getElementById(pos).value);
+            }
+        }
+
+        tableBuilt = true;
+    }
+
+    else {
+
+        var pos = '';
+        for (var i = 0; i < materias.length; i++) {
+            for (var j = 0; j <= pesosQtd; j++) {
+                pos = i.toString() + j.toString();
+                matriz[i][j] = document.getElementById(pos).value;
+            }
         }
     }
+    
+    ready = true;
+
+    var count;
+
+    for (var i = 0; i < materias.length; i++) {
+        count = 0;
+        for (var j = 0; j <= pesosQtd; j++) {
+            if (matriz[i][j] == '') {
+                count++;
+            }
+        }
+        if (count > 1) {
+            ready = false;
+        }
+    }
+
+    console.log('Ready: ' + ready);
+
+    if (!ready) {
+        alert("Insira pelo menos " + pesosQtd.toString() + " notas por disciplina");
+    }
+    else {
+        boletim();
+    }
+
+}
+
+function boletim() {
+
+    switch (type) {
+        case '01':
+            var complete = 0;
+            var mediaA = '(';
+            var solucion;
+            for (var i = 0; i < materias.length; i++) {
+                for (var j = 0; j < pesosQtd; j++) {
+                    if (matriz[i][j] == '')
+                        mediaA += 'x + ';
+                    else {
+                        mediaA += matriz[i][j] + ' + ';
+                        complete++;
+                    }
+                }
+                if (matriz[i][pesosQtd] == '')
+                    mediaA += '0 ) / ' + pesosQtd + ' = ' + 'x';
+                else {
+                    complete++;
+                    if (complete == pesosQtd + 1) {
+                        mediaA += '0 ) / ' + pesosQtd + ' = x';
+                    }
+                    else {
+                        mediaA += '0 ) / ' + pesosQtd + ' = ' + matriz[i][pesosQtd];
+                    }
+                }
+            }
+            
+            console.log(mediaA);
+            
+            break;
+        case '02':
+            alert('Pod');
+            break;
+        case '03':
+            alert('harmony');
+            break;
+    }
+
 }
