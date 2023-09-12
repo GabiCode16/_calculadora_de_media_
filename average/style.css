@@ -1,0 +1,71 @@
+body {
+    text-align: center;
+    /* background: linear-gradient(236.85deg, #06b48f 14%, #469beb 22%, #0621b9 64%);  */
+    background-color: #0621b9;
+}
+
+.container {
+    padding: 13.9em;
+}
+
+h1 {
+    color: rgb(255, 169, 8);
+    font-size: 3em;
+}
+
+button, select {
+    border-radius: 16px;
+    color: blue;
+    font-size: 1.4em;
+    padding: 0.2em 0.4em;
+    background: rgb(17, 209, 17);
+}
+
+button:hover, select:hover {
+    color:red;
+  }
+
+button:focus, select:focus {
+    color:red;
+}
+
+.pesos {
+    display: inline-flex;
+    align-items: center;
+}
+
+h2, h3 {
+    color: rgb(255, 169, 8);
+    padding: 5px;
+}
+
+h3 {
+    padding: 5px;
+}
+
+.inPeso {
+    border-radius: 16px;
+    color: blue;
+    background: rgb(17, 209, 17);
+    width: 65px;
+    height: 32px;
+}
+
+input {
+    text-align: center;
+    font-size: 1em;
+
+    color: blue;
+    background: rgb(17, 209, 17);
+}
+
+table {
+    border: 2px solid rgb(17, 209, 129);
+    border-collapse: collapse;
+  }
+
+  th, tr, td {
+  border: solid 1px rgb(17, 209, 129);
+  color: white;
+  padding: 0.2em 0.4em;
+}
