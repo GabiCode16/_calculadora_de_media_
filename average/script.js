@@ -4,6 +4,7 @@ var type2;
 var pesosQtd;
 var pesoClick = false;
 var pesoTotal = 0;
+var pesoList = [];
 var table = false;
 var materias = [];
 var subjects = false;
@@ -89,11 +90,13 @@ function select2() {
 
             function loopAssincrono() {
                 pesoTotal = 0;
+                pesoList = [];
                 next = false;
                 countNotNull = 0;
                 for (var i = 0; i < pesosQtd; i++) {
                     if (document.getElementById("i" + (i + 1).toString()).value != '') {
-                        pesoTotal += parseInt(document.getElementById("i" + (i + 1).toString()).value);
+                        pesoTotal += parseFloat(document.getElementById("i" + (i + 1).toString()).value);
+                        pesoList.push(parseFloat(document.getElementById("i" + (i + 1).toString()).value));
                         countNotNull++;
                     }
                 }
@@ -369,14 +372,62 @@ function boletim() {
                 }
             }
 
-            console.log(matriz);
             table_finished();
             
             break;
 
         case '02':
 
-            alert('Pod');
+            var complete;
+
+            for (var i = 0; i < materias.length; i++) {
+                complete = 0;
+                for (var j = 0; j <= pesosQtd; j++) {
+                    if (matriz[i][j] != '')
+                        complete++
+                if (complete == pesosQtd + 1)
+                    matriz[i][pesosQtd] = '';
+                }
+            }
+
+            var a;
+            var b = 0;
+
+            for (var i = 0; i < materias.length; i++) {
+
+                b = 0;
+
+                if (matriz[i][pesosQtd] == '')
+                    a = -1 * pesoTotal;
+                else {
+                    for (var j = 0; j < pesosQtd; j++) {
+                        if (matriz[i][j] == '') {
+                            a = pesoList[j];
+                        }
+                    }
+                }
+
+                var bCount = 0;
+
+                for (var j = 0; j < pesosQtd; j++) {
+                    if (matriz[i][j] != '') {
+                        b += parseFloat(matriz[i][j]) * pesoList[j];
+                        bCount++;
+                    }
+                }
+
+                if (bCount < pesosQtd)
+                    b -= pesoTotal * parseFloat(matriz[i][pesosQtd]);
+
+                var x = (Math.round(-b / a * 10) / 10).toString();
+
+                for (var j = 0; j <= pesosQtd; j++) {
+                    if (matriz[i][j] == '')
+                        matriz[i][j] = x;
+                }
+            }
+
+            table_finished();
 
             break;
 
