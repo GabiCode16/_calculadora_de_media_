@@ -370,6 +370,7 @@ function boletim() {
             }
 
             console.log(matriz);
+            table_finished();
             
             break;
 
@@ -386,5 +387,64 @@ function boletim() {
             break;
 
     }
+
+}
+
+function table_finished() {
+
+    var page4_5 = '<h1>Calculadora de Média</h1>\n\
+    <table style="width:100%">\n\
+    <thead>\n\
+    <tr>\n\
+    <th>Disciplina</th>\n';
+
+    for (var i = pesosQtd; i > 0; i--) {
+        switch (pesosQtd) {
+            case 4:
+                page4_5 += '<th>' + (5 - i).toString() + 'º bimestre</th>\n';
+                break;
+            case 3:
+                page4_5 += '<th>' + (4 - i).toString() + 'º trimestre</th>\n';
+                break;
+            case 2:
+                page4_5 += '<th>' + (3 - i).toString() + 'º semestre</th>\n';
+                break;
+        }
+    }
+
+    page4_5 += '<th>Média Final</th>\n\
+    </tr>\n\
+    </thead>\n\
+    <tbody>\n';
+
+    for (var g = materias.length; g > 0; g--) {
+        page4_5 += '<tr>\n\
+        <th>' + materias[materias.length - g] + '</th>\n';
+
+        for (var e = pesosQtd; e > 0; e--) {
+
+            switch (pesosQtd) {
+                case 4:
+                    page4_5 += '<th>' + matriz[materias.length - g][4 - e] + '</th>\n';
+                    break;
+                case 3:
+                    page4_5 += '<th>' + matriz[materias.length - g][3 - e] + '</th>\n';
+                    break;
+                case 2:
+                    page4_5 += '<th>' + matriz[materias.length - g][2 - e] + '</th>\n';
+                    break;
+            }
+        }
+
+        page4_5 += '<th>' + matriz[materias.length - g][pesosQtd] + '</th>\n';
+
+        page4_5 += '</tr>\n';
+    }
+
+    page4_5 += '</tbody>\n\
+    </table><br><br><br><br>\n\
+    <button onclick="valueTable()">Finalizar</button>\n';
+
+    divText.innerHTML = page4_5;
 
 }
