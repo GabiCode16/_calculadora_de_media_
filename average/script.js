@@ -185,11 +185,22 @@ function add_remove() {
             existance = true;
     }
 
-    if (materia != '' && !existance)
+    if (materia != '' && !existance) 
         materias.push(materia);
 
     if (existance)
         materias.splice(materias.indexOf(materia), 1);
+
+    if (tableBuilt) {
+        if (materia != '' && !existance) {
+            matriz.push([]);
+            for (var i = 0; i <= pesosQtd; i++)
+                matriz[materias.indexOf(materia)].push('');
+        }
+        if (existance) {
+            matriz.splice(materias.indexOf(materia), 1);
+        }
+    }
 
 }
 
@@ -258,6 +269,14 @@ function finish2() {
 
     divText.innerHTML = page4_5;
 
+    if (tableBuilt) {
+        for (var i = 0; i < materias.length; i++) {
+            for (var j = 0; j <= pesosQtd; j++) {
+                document.getElementById(i.toString() + j.toString()).value = matriz[i][j];
+            }
+        }
+    }
+
 }
 
 function finish() {
@@ -310,8 +329,6 @@ function valueTable() {
             ready = false;
         }
     }
-
-    console.log('Ready: ' + ready);
 
     if (!ready) {
         alert("Insira pelo menos " + pesosQtd.toString() + " notas por disciplina");
@@ -433,7 +450,39 @@ function boletim() {
 
         case '03':
 
-            alert('harmony');
+            var complete;
+            var sum = 0;
+
+            for (var i = 0; i < materias.length; i++) {
+                complete = 0;
+                for (var j = 0; j <= pesosQtd; j++) {
+                    if (matriz[i][j] != '')
+                        complete++
+                if (complete == pesosQtd + 1)
+                    matriz[i][pesosQtd] = '';
+                }
+            }
+
+            for (var i = 0; i < materias.length; i++) {
+                sum = 0;
+                for (var j = 0; j < pesosQtd; j++) {
+                    if (matriz[i][j] != '') {
+                        sum += parseFloat(matriz[i][j]) ** (-1);
+                    }
+                }
+                if (matriz[i][pesosQtd] == '') {
+                    matriz[i][pesosQtd] = (Math.round(pesosQtd / sum * 10) / 10).toString();
+                }
+                else {
+                    for (var j = 0; j < pesosQtd; j++) {
+                        if (matriz[i][j] == '') {
+                            matriz[i][j] = (Math.round(parseFloat(matriz[i][pesosQtd]) / (pesosQtd - parseFloat(matriz[i][pesosQtd]) * sum)*10)/10).toString();
+                        }
+                    }
+                }
+            }
+
+            table_finished();
 
             break;
 
@@ -494,8 +543,27 @@ function table_finished() {
 
     page4_5 += '</tbody>\n\
     </table><br><br><br><br>\n\
-    <button onclick="valueTable()">Finalizar</button>\n';
+    <button onclick="start_table()">Editar</button>\n\
+    <button onclick="download()">Download</button>';
 
     divText.innerHTML = page4_5;
+
+    subjects = false;
+
+}
+
+function download() {
+    
+    var html = document.getElementById('html');
+
+    var options = {
+        margin:       0,
+        filename:     'boletim.pdf',
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'landscape' },
+        background: 'transparent'
+      };
+
+    html2pdf().set(options).from(html).save();
 
 }

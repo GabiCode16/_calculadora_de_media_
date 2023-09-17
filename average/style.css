@@ -2,10 +2,12 @@ body {
     text-align: center;
     /* background: linear-gradient(236.85deg, #06b48f 14%, #469beb 22%, #0621b9 64%);  */
     background-color: #0621b9;
+    width: 99%; 
+    height: 100%;
 }
 
 .container {
-    padding: 13.9em;
+    padding: 10em;
 }
 
 h1 {
