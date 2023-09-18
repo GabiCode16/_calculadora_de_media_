@@ -11,6 +11,7 @@ var subjects = false;
 var matriz = [];
 var ready = true;
 var tableBuilt = false;
+var nameFinal = '';
 
 function start() { 
     var page2 = "<h1>Calculadora de Média</h1>\n" +
@@ -20,7 +21,7 @@ function start() {
         "<option value='02'>Média Ponderada\n" +
         "<option value='03'>Média Harmônica\n" +
     "</select><br><br><br>\n" +
-    "<button onclick='select()'>Começar</button>";
+    "<button onclick='select()'>Continuar</button>";
 
     divText.innerHTML = page2;
 }
@@ -33,7 +34,7 @@ function select() {
     <option value='t'>Trimestre\n\
     <option value='s'>Semestre\n\
     </select><br><br><br>\n\
-    <button onclick='select2()'>Começar</button>";
+    <button onclick='select2()'>Prosseguir</button>";
 
     type = document.getElementById('media').value;
 
@@ -82,7 +83,7 @@ function select2() {
             value="0">\n';
 
             page3 += ' </div><br><br>\n\
-            <button onclick="Peso()">Começar</button>';
+            <button onclick="Peso()">Continuar</button>';
 
             divText.innerHTML = page3;
 
@@ -109,7 +110,7 @@ function select2() {
 
                 if (pesoClick && next) {
                     clearInterval(intervalId);
-                    start_table();
+                    nameFunc();
                 }
                 else {
                     pesoClick = false;
@@ -128,7 +129,7 @@ function select2() {
                     pesosQtd = 2;
                     break;
             }
-            start_table();
+            nameFunc();
             }
 
     } else {
@@ -144,10 +145,17 @@ function Peso() {
 }
 
 function start_table() {
-    var page3_4 = '<h1>Criação da Tabela</h1>\n\
+    var page3_4 = '<h1>Adicionar Matérias</h1>\n\
     <input type="text" id="sub"><br><br>\n\
     <button onclick="add_remove()" id="ar">+ Adicionar Matéria</button><br><br>\n\
     <button onclick="finish()">Concluir</button>';
+
+    if (tableBuilt) {
+        page3_4 = '<h1>Editar Matérias</h1>\n\
+    <input type="text" id="sub"><br><br>\n\
+    <button onclick="add_remove()" id="ar">+ Adicionar Matéria</button><br><br>\n\
+    <button onclick="finish()">Concluir</button>';
+    }
 
     divText.innerHTML = page3_4;
 
@@ -206,7 +214,7 @@ function add_remove() {
 
 function finish2() {
 
-    var page4_5 = '<h1>Calculadora de Média</h1>\n\
+    var page4_5 = '<h1 id="h1">Boletim de ' + nameFinal + '</h1>\n\
     <table style="width:100%">\n\
     <thead>\n\
     <tr>\n\
@@ -275,6 +283,7 @@ function finish2() {
                 document.getElementById(i.toString() + j.toString()).value = matriz[i][j];
             }
         }
+        document.getElementById('h1').textContent = 'Editar Boletim';
     }
 
 }
@@ -492,7 +501,7 @@ function boletim() {
 
 function table_finished() {
 
-    var page4_5 = '<h1>Calculadora de Média</h1>\n\
+    var page4_5 = '<h1>Boletim de ' + nameFinal + '</h1>\n\
     <table style="width:100%">\n\
     <thead>\n\
     <tr>\n\
@@ -566,4 +575,22 @@ function download() {
 
     html2pdf().set(options).from(html).save();
 
+}
+
+function nameFunc() {
+    var pageADD = '<h1>Adicione seu nome</h1>\n\
+    <input id="name"></input><br><br>\n\
+    <button onclick="nameADDicted()">Enviar</button>';
+
+    divText.innerHTML = pageADD;
+}
+
+function nameADDicted() {
+    if (document.getElementById('name').value == '') {
+        alert('Adicione um nome');
+    }
+    else {
+        nameFinal = document.getElementById('name').value;
+        start_table();
+    }
 }
