@@ -20,21 +20,21 @@ Para facilitar o seu entendimento, vamos dividir o passo-a-passo nas seguintes e
 
 ## Página Inicial
 
-![Captura de tela 2024-01-24 111910](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/1630fe33-3a8c-4a3c-aaff-f8426c4b1bb4)
+Esta é a página que o usuário acessará quando entrar na calculadora pela primeira vez. Para começar a usá-la, é só clicar em "Começar"
 
- Esta é a página que o usuário acessará quando entrar na calculadora pela primeira vez. Para começar a usá-la, é só clicar em "Começar"
+![Captura de tela 2024-01-24 111910](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/1630fe33-3a8c-4a3c-aaff-f8426c4b1bb4)
 
 ## Seleção da Média
 
-![Captura de tela 2024-01-24 111929](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/905b2ac3-e64d-47f4-ac2e-9e701d282ed3)
-
 Aqui o usuário deve selecionar a média que ele vai usar. Ele pode selecionar entre as médias aritmética, ponderada e harmônica
+
+![Captura de tela 2024-01-24 111929](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/905b2ac3-e64d-47f4-ac2e-9e701d282ed3)
 
 ## Seleção do Modo de Avaliação
 
-![Captura de tela 2024-01-24 112004](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/9330421c-029f-4ba2-a7de-de066c7d0057)
-
 Aqui o usuário deve selecionar o modo de avaliação utilizado por ele. Ele pode selecionar por bimestre, trimestre ou semestre
+
+![Captura de tela 2024-01-24 112004](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/9330421c-029f-4ba2-a7de-de066c7d0057)
 
 ## Definindo Pesos
 
@@ -51,15 +51,15 @@ Logo, para usar esta média o usuário deverá conhecer os pesos e inserí-los n
 
 ## Inserindo Nome
 
-![Captura de tela 2024-01-24 112145](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/a531b09b-6201-45cf-946c-a2c65bcf43db)
-
 Aqui o usuário deve adicionar o nome dele, para que apareça mais tarde no seu boletim
+
+![Captura de tela 2024-01-24 112145](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/a531b09b-6201-45cf-946c-a2c65bcf43db)
 
 ## Inserindo Matérias
 
-![Captura de tela 2024-01-24 112226](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/f6e78b49-4661-485e-a443-3da9b0827ee9)
-
 Aqui o usuário deve adicionar todas as disciplinas que ele deseja. **Somente depois** de adicionar todas elas, o usuário deve clicar em Concluir
+
+![Captura de tela 2024-01-24 112226](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/f6e78b49-4661-485e-a443-3da9b0827ee9)
 
 Se o usuário quiser excluir uma matéria que já foi adicionada, basta digitar o nome da matéria exatamente da mesma forma que ela tenha sido adicionada antes. E o botão automaticamente muda para "Remover Matéria", como pode ser visto logo abaixo
 
@@ -67,6 +67,24 @@ Se o usuário quiser excluir uma matéria que já foi adicionada, basta digitar 
 
 ## Adicionando Notas
 
+![Captura de tela 2024-01-24 112310](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/e46905e4-d1e4-48b0-a61a-b1e037f0d78e)
+
+Aqui o usuário deve adicionar suas notas por matéria. Isso pode ser feito de duas formas, como pode ser visto na imagem abaixo:
+
+![Captura de tela 2024-01-24 112427](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/c8d087bd-d4b1-495b-9c85-bcc5e0744dca)
+
+A primeira forma, se adiciona apenas as notas, deixando o espaço da média final em branco, porque o espaço será preenchido com a nota pela própria calculadora, como foi feito com a matéria 1. 
+
+A segunda forma, se adiciona as notas, menos a nota que ainda não foi dada, e se adiciona a nota que o usuário deseja atingir na média final. Assim, a calculadora calcula a nota necessária para atingir essa determinada média, como foi feito com a matéria 2.
+
+Na matéria 3, a calculadora vai calcular a média normalmente, corrigindo a nota final.
+
 ## Gerando Boletim
 
+Após concluir todos esses passos, a calculadora vai gerar o boletim com todas as médias e notas calculadas, como pode ser visto abaixo
+
+![Captura de tela 2024-01-24 112713](https://github.com/GabiCode16/_calculadora_de_media_/assets/91836087/c04289dc-6e62-4fa2-9d2a-710211767ed0)
+
 ## Edição e Download
+
+Para Editar e Baixar o Boletim, basta clicar nos respectivos botões. Na Edição, o usuário volta para a página onde adicionou as disciplinas, podendo adicionar ou remover uma e depois, apenas muda as notas para cada disciplina, gerando um novo Boletim
